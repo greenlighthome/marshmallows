@@ -1,0 +1,192 @@
+<template name="postsList" xmlns="http://www.w3.org/1999/html">
+    <div class="container posts-container">
+        {{#each posts}}
+            {{> postItem }}
+            <br>
+        {{/each}}
+        {{#if nextPath}}
+            <a class="load-more" href="{{nextPath}}">Load more...</a>
+        {{else}}
+            {{#unless ready}}
+                {{> spinner}}
+            {{/unless}}
+        {{/if}}
+    </div>
+</template>
+
+
+
+
+<template name="postItem">
+    <a href="{{pathFor 'postPage'}}">
+        <div class="img-container">
+            {{> image}}
+            <h4 class="post-title">{{title}}</h4>
+        </div>
+    </a>
+        <p class="posted">Posted by <span class="author">{{author}}</span></p>
+    <a class="comment-counter-item" href="{{pathFor 'postPage'}}">{{pluralize commentsCount 'comment'}}</a>
+    <span class="votes-container">{{submittedDate}}</span>
+</template>
+
+
+
+
+<template name="postPage">
+    <div class="container posts-container">
+        <div class="img-container-post-page">
+            {{> image}}
+            <h4 class="post-title-post-page center-align">{{title}}</h4>
+            <p class="posted-post-page center-align">By <span class="author-post-page">{{author}}</span></p>
+            {{#if ownPost}}<a id="trigger-edit" class="edit-button center-align modal-trigger" href="#modal2">Edit</a>{{/if}}
+
+        </div>
+        <div id="modal2" class="modal bottom-sheet">
+            <div class="modal-row-top"></div>
+            <div class="modal-content">
+            <span class="close-button"><i class="medium mdi-navigation-close"></i></span>
+                {{> postEdit}}
+            </div>
+        </div>
+
+        <h5 class="post-header center-align">{{header}}</h5>
+
+        <div class="fr-view">
+            {{{body}}}
+        </div>
+
+       <a href="{{pathFor 'postsList'}}"> <i class="small mdi-navigation-arrow-back"></i><span class="back-to-posts">Back to posts</span></a>
+    </div>
+
+    <div class="container">
+
+    </div>
+
+    <div class="container comment-count">
+
+        <a href="{{pathFor 'postPage'}}">{{pluralize commentsCount 'comment'}} </a>
+        <div class="">
+            <div class="votes-container">
+                <span>{{votes}} </span><a href="#" class="upvote"><span class="likes">👍🏽</span></a><span class="votes"> {{pluralizeLike votes 'LIKE'}}</span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="comments-container">
+        {{#if currentUser}}
+            {{> commentSubmit}}
+        {{else}}
+            <p class="need-login disabled">Please log in to leave a comment</p>
+        {{/if}}
+        <div class="container">
+            <div class="comments">
+                {{#each comments}}
+                    {{> commentItem}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>
+
+
+
+
+<template name="postSubmit">
+    <div class="container">
+        <div class="row">
+            <form id="submit-form1" class="submit-form col s12 z-depth-2">
+                <img class="circle responsive-img circle-img" src="http://graph.facebook.com/{{currentUser.services.facebook.id}}/picture/?type=large">
+
+                    <div class="input-field col s10">
+                        <input name="title" id="title-submit" placeholder="Title" type="text" class="validate active" required>
+                    </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="sub-header" id="sub-header-submit" placeholder="Header" type="text" class="validate active" required>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="body-submit" name="content"></textarea>
+
+                        <!-- <textarea name="body-submit" id="body-submit" class="materialize-textarea active" placeholder="Tell us your story" length="1000" required></textarea>-->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="file-field input-field">
+                            <div id="button-picker" class="btn">
+                                <span class="text-button">Image</span>
+                                <input name="image" type="file" required>
+                            </div>
+
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
+
+
+
+
+<template name="postEdit">
+    <div class="container">
+        <div class="row">
+            <form id="edit-form1" class="submit-form col s12 z-depth-2">
+                <img class="circle responsive-img circle-img" src="http://graph.facebook.com/{{currentUser.services.facebook.id}}/picture/?type=large">
+
+                    <div class="input-field col s10">
+                        <input name="title-edit" id="title-edit" placeholder="Title" type="text" value="{{title}}" class="validate active" required>
+                    </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="sub-header-edit" id="sub-header-edit" placeholder="Header" type="text" value="{{header}}" class="validate active" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="body-edit" name="body-edit">{{body}}</textarea>
+
+                       <!-- <textarea name="body-edit" id="body-edit" class="materialize-textarea active" placeholder="Tell us a story" required>{{body}}</textarea>-->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span><i class="waves-light large"></i>Image</span>
+                                <input name="image" type="file">
+                            </div>
+
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Submit" class="submit btn light-blue darken-4 waves-light"/>
+                <a class="btn waves-light red darken-4 delete" href="#">Delete post</a>
+            </form>
+        </div>
+    </div>
+</template>
+
+
+
+
+<template name="image">
+    <img class="img-cover materialboxed" data-caption="{{title}}" src="{{c.url imgPublicId}}">
+</template>

@@ -1,0 +1,61 @@
+@import "base";
+
+.alert {
+  animation: fadeOut 3000ms ease-in 0s 1 forwards;
+  width: 220px;
+  height: 100px;
+  background-color: @color-alert-danger;
+  position: absolute;
+  margin-top: 15px;
+  z-index: 1100;
+  right: 20px;
+  margin-bottom: 15px;
+  .border-radius(5px);
+  .alert-content {
+    color: @color-white;
+    font-size: 1.3em;
+    font-weight: 500;
+    display: block;
+    margin: auto;
+    clear: both;
+  }
+}
+
+@keyframes fadeOut {
+  0% {opacity: 0;}
+  20% {opacity: 0.8;}
+  75% {opacity: 0.8;}
+  100% {opacity: 0;}
+}
+
+
+label#title-submit-error.error,
+label#title-edit-error.error,
+
+label#sub-header-submit-error.error,
+label#sub-header-edit-error.error,
+
+label#body-submit-error.error,
+label#body-edit-error.error
+
+label#title-submit-error.error.active,
+label#title-edit-error.error.active,
+
+label#sub-header-submit-error.error.active,
+label#sub-header-edit-error.error.active,
+
+label#body-submit-error.error.active,
+label#body-edit-error.error.active {
+  visibility: hidden;
+}
+
+.input-field input[type=text].error.active {
+  border-bottom: 1px solid red;
+  box-shadow: 0 1px 0 0 red;
+}
+
+textarea#body-submit.materialize-textarea.error,
+textarea#body-edit.materialize-textarea.error {
+  border-bottom: 1px solid red;
+  box-shadow: 0 1px 0 0 red;
+}

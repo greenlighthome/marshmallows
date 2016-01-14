@@ -1,0 +1,28 @@
+<template name="siteLayout">
+    <header>
+        {{> header }}
+    </header>
+
+    <main>
+        {{> yield }}
+    </main>
+
+    <footer class="page-footer grey darken-4">
+        {{> footer }}
+    </footer>
+</template>
+
+
+<template name="applicationLayout">
+    <header>
+        {{> blogHeader }}
+    </header>
+    {{> errors}}
+    <main>
+        {{> yield }}
+    </main>
+
+    <footer class="page-footer grey darken-4">
+        {{> footer }}
+    </footer>
+</template>

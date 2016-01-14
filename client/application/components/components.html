@@ -1,0 +1,110 @@
+<template name="header">
+    <div class="hero-header">
+        {{> navigation }}
+    </div>
+</template>
+
+<template name="blogHeader">
+    <div class="blog-header z-depth-1 grey darken-4">
+        {{> navigation }}
+    </div>
+    {{> subHeader}}
+</template>
+
+
+
+
+<template name="subHeader">
+    <div class="sub-header">
+        {{#if currentUser}}
+            {{#if currentUser.services.facebook.name}}
+            <a id="facebook-name" class="right dropdown-button2" data-activates="dropdown2" href="">
+                <span class="facebook-name">{{currentUser.services.facebook.name}}</span>
+            </a>
+            {{/if}}
+        <ul id="dropdown2" class="dropdown-content">
+            <li><a id="trigger" class="modal-trigger" href="#modal1">New post</a></li>
+            <li class="divider"></li>
+            <li><a href="#!" id="logout" class="waves-effect waves-light">Logout</a></li>
+        </ul>
+
+        {{else}}
+            <a id="login" class="right dropdown-button" data-activates="dropdown1" href="">LOGIN</a>
+            <ul id='dropdown1' class='dropdown-content'>
+                <li id="facebook-login" class="">Facebook login</li>
+            </ul>
+        {{/if}}
+    </div>
+
+    <div id="modal1" class="modal bottom-sheet">
+        <div class="modal-row-top"></div>
+        <div class="modal-content">
+            <span class="close-button"><i class="medium mdi-navigation-close"></i></span>
+            {{> postSubmit}}
+        </div>
+    </div>
+</template>
+
+
+
+
+<template name="navigation">
+    <div class="navigation">
+        <div class="nav-wrapper">
+
+            <ul class="right nav-block hide-on-small-and-down">
+                <li><a class="nav-item" href="{{pathFor 'index'}}">Home</a></li>
+                <li><a class="nav-item" href="">About</a></li>
+                <li><a class="nav-item" href="{{pathFor 'postsList'}}">Blog</a></li>
+                <li><a class="nav-item" href="">Contact</a></li>
+            </ul>
+
+            <a href="#" data-activates="mobile" class="button-collapse hide-on-med-and-up">
+                <i id="navigation-menu" class="medium mdi-navigation-menu"></i>
+            </a>
+            <ul class="side-nav" id="mobile">
+                <li><a class="" href="{{pathFor 'index'}}">Home</a></li>
+                <li><a class="" href="">About</a></li>
+                <li><a class="" href="{{pathFor 'postsList'}}">Blog</a></li>
+                <li><a class="" href="">Contact</a></li>
+            </ul>
+        </div>
+
+    </div>
+</template>
+
+
+
+
+<template name="footer">
+    <div class="footer">
+
+    </div>
+</template>
+
+
+
+
+<template name="loading">
+    {{> spinner }}
+</template>
+
+
+
+
+<template name="notFound">
+    <div class="container">
+        <h1 class="denied-and-404 center-align">404</h1>
+        <p class="denied-and-404 center-align">Sorry, we couldn't find a page at this address.</p>
+    </div>
+</template>
+
+
+
+
+<template name="accessDenied">
+    <div class="container">
+        <h1 class="denied-and-404 center-align">Access Denied</h1>
+        <p class="denied-and-404 center-align">Please login to gain access to this area</p>
+    </div>
+</template>
