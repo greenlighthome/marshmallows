@@ -19,7 +19,15 @@ main {
   flex: 1 0 auto;
 }
 .page-footer {
-  height: 280px;
+  padding: 0 30px;
+  background: url("images/icons/wind_rose_dark.png") no-repeat center;
+  background-size: 60px 60px;
+  .upper-row {
+    height: 160px;
+  }
+  .bottom-row {
+    height: 20px;
+  }
 }
 /********************************/
 
@@ -133,40 +141,20 @@ main {
   }
 }
 #login {
-  color: dimgrey;
+  margin-top: 6px;
+  width: 150px;
+  text-align: center;
+}
+
+ul#dropdown2.dropdown-content {
+  top: 100px!important;
+  text-align: center;
+}
+
+.facebook-name {
   padding: 7px 15px;
-}
-
-#facebook-name {
-  padding: 0 10px 0 0!important;
-  background-color: #3b5998;
-  float: right;
-  color: @color-white;
-  .border-radius(0);
-
-  .facebook-name {
-    position: relative;
-    padding: 0 20px 0 30px;
-    text-align: center;
-    line-height: 37px;
-  }
-}
-ul#dropdown1.dropdown-content.active {
-  min-width: 210px!important;
-  li {
-    padding: 15px 20px;
-    font-size: 1.1em;
-  }
-  li#facebook-login {
-    background-color: #3b5998;
-    color: @color-white;
-    text-align: center;
-    .border-radius(0);
-  }
-  li#twitter-login {
-    background-color: #1dcaff;
-    color: @color-white;
-  }
+  position: relative;
+  top: 6px;
 }
 
 div.input-field.col.s10 {
@@ -263,4 +251,12 @@ img.img-cover.materialboxed.initialized:hover {
 a.load-more {
   font-size: 1.3em;
   font-weight: 400;
+}
+
+.dateSubmitted {
+  float: right;
+  position: relative;
+  top: 20px;
+  right: 10px;
+  font-weight: 500;
 }

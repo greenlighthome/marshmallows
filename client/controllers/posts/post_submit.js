@@ -64,6 +64,28 @@ Template.postSubmit.onRendered(function() {
 
 Template.postSubmit.onRendered(function() {
     this.$('#submit-form1').validate();
-    this.$('#body-submit').froalaEditor();
+    var editor = new MediumEditor('.editable', {
+        placeholder: {
+            text: "Tell us your story"
+        },
+
+        toolbar: {
+            /* These are the default options for the toolbar,
+             if nothing is passed this is what is used */
+            allowMultiParagraphSelection: true,
+            buttons: ['bold', 'italic', 'underline', 'anchor', 'h4', 'h5', 'quote', 'pre', 'justifyCenter', 'justifyLeft', 'justifyRight', 'justifyFull'],
+            diffLeft: 0,
+            diffTop: -10,
+            firstButtonClass: 'medium-editor-button-first',
+            lastButtonClass: 'medium-editor-button-last',
+            standardizeSelectionStart: false,
+            static: true,
+
+            /* options which only apply when static is true */
+            align: 'center',
+            sticky: true,
+            updateOnEmptySelection: false
+        }
+    });
 });
 

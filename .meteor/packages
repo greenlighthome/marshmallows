@@ -32,4 +32,5 @@ accounts-twitter
 accounts-ui
 themeteorchef:jquery-validation
 summernote:standalone
-froala:editor
+visudare:disqus
+mediumeditor:mediumeditor

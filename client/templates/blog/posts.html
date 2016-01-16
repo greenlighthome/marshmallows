@@ -1,4 +1,4 @@
-<template name="postsList" xmlns="http://www.w3.org/1999/html">
+<template name="postsList">
     <div class="container posts-container">
         {{#each posts}}
             {{> postItem }}
@@ -24,9 +24,10 @@
             <h4 class="post-title">{{title}}</h4>
         </div>
     </a>
+    <span class="dateSubmitted">{{submittedDate}}</span>
+
         <p class="posted">Posted by <span class="author">{{author}}</span></p>
-    <a class="comment-counter-item" href="{{pathFor 'postPage'}}">{{pluralize commentsCount 'comment'}}</a>
-    <span class="votes-container">{{submittedDate}}</span>
+
 </template>
 
 
@@ -55,38 +56,14 @@
             {{{body}}}
         </div>
 
-       <a href="{{pathFor 'postsList'}}"> <i class="small mdi-navigation-arrow-back"></i><span class="back-to-posts">Back to posts</span></a>
+       <a href="{{pathFor 'postsList'}}"> <i class="small"> ⇐</i><span class="back-to-posts"> Back to posts</span></a>
     </div>
 
+    <br><br>
     <div class="container">
-
+        {{> disqus }}
     </div>
 
-    <div class="container comment-count">
-
-        <a href="{{pathFor 'postPage'}}">{{pluralize commentsCount 'comment'}} </a>
-        <div class="">
-            <div class="votes-container">
-                <span>{{votes}} </span><a href="#" class="upvote"><span class="likes">👍🏽</span></a><span class="votes"> {{pluralizeLike votes 'LIKE'}}</span>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="comments-container">
-        {{#if currentUser}}
-            {{> commentSubmit}}
-        {{else}}
-            <p class="need-login disabled">Please log in to leave a comment</p>
-        {{/if}}
-        <div class="container">
-            <div class="comments">
-                {{#each comments}}
-                    {{> commentItem}}
-                {{/each}}
-            </div>
-        </div>
-    </div>
 </template>
 
 
@@ -111,9 +88,7 @@
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="body-submit" name="content"></textarea>
-
-                        <!-- <textarea name="body-submit" id="body-submit" class="materialize-textarea active" placeholder="Tell us your story" length="1000" required></textarea>-->
+                        <textarea id="body-submit" class="editable" name="content"></textarea>
                     </div>
                 </div>
 
@@ -126,7 +101,7 @@
                             </div>
 
                             <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text">
+                                <input class="file-path validate" type="text" placeholder="Picture or it didn't happen">
                             </div>
                         </div>
                     </div>
@@ -157,7 +132,7 @@
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="body-edit" name="body-edit">{{body}}</textarea>
+                        <textarea id="body-edit" class="editable" name="body-edit">{{body}}</textarea>
 
                        <!-- <textarea name="body-edit" id="body-edit" class="materialize-textarea active" placeholder="Tell us a story" required>{{body}}</textarea>-->
                     </div>

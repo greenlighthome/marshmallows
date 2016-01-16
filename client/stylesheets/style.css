@@ -16,7 +16,15 @@ main {
   flex: 1 0 auto;
 }
 .page-footer {
-  height: 280px;
+  padding: 0 30px;
+  background: url("images/icons/wind_rose_dark.png") no-repeat center;
+  background-size: 60px 60px;
+}
+.page-footer .upper-row {
+  height: 160px;
+}
+.page-footer .bottom-row {
+  height: 20px;
 }
 /********************************/
 .hero-header {
@@ -133,48 +141,18 @@ main {
   cursor: pointer;
 }
 #login {
-  color: dimgrey;
+  margin-top: 6px;
+  width: 150px;
+  text-align: center;
+}
+ul#dropdown2.dropdown-content {
+  top: 100px!important;
+  text-align: center;
+}
+.facebook-name {
   padding: 7px 15px;
-}
-#facebook-name {
-  padding: 0 10px 0 0!important;
-  background-color: #3b5998;
-  float: right;
-  color: #fff;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-}
-#facebook-name .facebook-name {
   position: relative;
-  padding: 0 20px 0 30px;
-  text-align: center;
-  line-height: 37px;
-}
-ul#dropdown1.dropdown-content.active {
-  min-width: 210px!important;
-}
-ul#dropdown1.dropdown-content.active li {
-  padding: 15px 20px;
-  font-size: 1.1em;
-}
-ul#dropdown1.dropdown-content.active li#facebook-login {
-  background-color: #3b5998;
-  color: #fff;
-  text-align: center;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-}
-ul#dropdown1.dropdown-content.active li#twitter-login {
-  background-color: #1dcaff;
-  color: #fff;
+  top: 6px;
 }
 div.input-field.col.s10 {
   float: right;
@@ -259,4 +237,11 @@ img.img-cover.materialboxed.initialized:hover {
 a.load-more {
   font-size: 1.3em;
   font-weight: 400;
+}
+.dateSubmitted {
+  float: right;
+  position: relative;
+  top: 20px;
+  right: 10px;
+  font-weight: 500;
 }

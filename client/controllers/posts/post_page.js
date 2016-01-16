@@ -8,9 +8,6 @@ Template.postPage.helpers({
     },
     commentsCount: function() {
         return Comments.find({postId: this._id}).count()
-    },
-    submittedDate: function() {
-        return moment().to(this.date);
     }
 });
 
@@ -40,4 +37,5 @@ Template.postPage.events({
 
 Template.postPage.onRendered(function() {
     this.$('.materialboxed').materialbox();
+
 });

@@ -18,7 +18,7 @@
     <div class="sub-header">
         {{#if currentUser}}
             {{#if currentUser.services.facebook.name}}
-            <a id="facebook-name" class="right dropdown-button2" data-activates="dropdown2" href="">
+            <a id="facebook-name" class="right dropdown-button2" data-activates="dropdown2" href="#">
                 <span class="facebook-name">{{currentUser.services.facebook.name}}</span>
             </a>
             {{/if}}
@@ -29,9 +29,9 @@
         </ul>
 
         {{else}}
-            <a id="login" class="right dropdown-button" data-activates="dropdown1" href="">LOGIN</a>
+            <a id="login" class="right dropdown-button" data-activates="dropdown1" href="#">LOGIN</a>
             <ul id='dropdown1' class='dropdown-content'>
-                <li id="facebook-login" class="">Facebook login</li>
+                <li id="facebook-login" class=""><a href="#" id="" class="waves-effect waves-light">Facebook login</a></li>
             </ul>
         {{/if}}
     </div>
@@ -78,7 +78,17 @@
 
 <template name="footer">
     <div class="footer">
+        <div class="container">
+            <div class="row upper-row">
 
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="row bottom-row">
+                © 2016 Copyright Eduardo da Silva
+                <a class="grey-text text-lighten-4 right" href="#!"></a>
+            </div>
+        </div>
     </div>
 </template>
 

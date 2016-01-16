@@ -34,4 +34,3 @@ createServiceConfiguration = function(service, clientId, secret) {
 createServiceConfiguration('facebook', '1525073457790455', 'a0add54698cf86f4ab91168a09d74ebd');
 createServiceConfiguration('twitter', 'qH5aha19cGukMGUSf79P62XxM', 'EMyCSK9msvwSWBZjxiFN47tbcG8eUe2v0b9Z55ZBblPYvlwTeK');
 
-
