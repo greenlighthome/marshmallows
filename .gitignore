@@ -1,0 +1,5 @@
+cloudinary.js
+
+server/admin/*
+client/cloudinary.js
+lib/startup.js
